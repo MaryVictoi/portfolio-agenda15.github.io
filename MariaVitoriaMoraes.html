@@ -1,0 +1,1162 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Maria Vitória Moraes • Dados, Automação &amp; IA | Analisar • Automatizar • Evoluir</title>
+<!-- Bootstrap 5 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap Icons -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+<!-- Google Fonts: Poppins, Space Grotesk & JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&amp;family=Space+Grotesk:wght@500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+    :root {
+      --font-base: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-heading: 'Space Grotesk', var(--font-base);
+      --bg-dark: #0B0D13;
+      --bg-surface: #11141F;
+      --bg-surface-elevated: #161A28;
+      --bg-card: #141724;
+      --border-subtle: #1E2335;
+      --border-glow: rgba(139, 92, 246, 0.35);
+      --primary-violet: #8B5CF6;
+      --primary-violet-hover: #7C3AED;
+      --violet-accent: #A855F7;
+      --violet-glow: rgba(139, 92, 246, 0.25);
+      --text-main: #F8FAFC;
+      --text-muted: #94A3B8;
+      --text-subtle: #64748B;
+    }
+
+    body {
+      font-family: var(--font-base);
+      scroll-behavior: smooth;
+      color: var(--text-main);
+      background-color: var(--bg-dark);
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .heading-font {
+      font-family: var(--font-heading);
+    }
+
+    /* Ambient background glow effect */
+    .ambient-glow {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, rgba(11, 13, 19, 0) 70%);
+      top: -100px;
+      right: -100px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Scroll Margin Offset for Fixed Navbar */
+    section {
+      scroll-margin-top: 80px;
+      padding: 95px 0;
+      position: relative;
+    }
+
+    /* Navbar Customizations */
+    .navbar {
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      background-color: rgba(11, 13, 19, 0.88) !important;
+      border-bottom: 1px solid var(--border-subtle);
+      transition: all 0.3s ease;
+      z-index: 1030;
+    }
+
+    .nav-link {
+      color: var(--text-muted) !important;
+      font-weight: 500;
+      font-size: 0.92rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: #FFFFFF !important;
+    }
+
+    /* Monogram Brand Badge */
+    .brand-monogram {
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%);
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1rem;
+      color: #FFFFFF;
+      letter-spacing: -0.5px;
+      box-shadow: 0 0 16px rgba(139, 92, 246, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* Signature Pill Badge */
+    .tagline-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: rgba(139, 92, 246, 0.1);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      color: #C4B5FD;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 600;
+      border-radius: 9999px;
+    }
+
+    /* Objective Badge */
+    .objective-badge {
+      display: inline-flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 16px;
+      background: rgba(139, 92, 246, 0.08);
+      border-left: 3px solid #8B5CF6;
+      border-radius: 4px 10px 10px 4px;
+      font-size: 0.88rem;
+      color: #E2E8F0;
+      line-height: 1.5;
+    }
+
+    /* Tech Stack Pills */
+    .tech-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 22px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 50px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: #E2E8F0;
+      transition: all 0.25s ease;
+      white-space: nowrap;
+      user-select: none;
+    }
+
+    .tech-pill:hover {
+      border-color: rgba(139, 92, 246, 0.6);
+      background: rgba(139, 92, 246, 0.15);
+      transform: translateY(-2px);
+      color: #FFFFFF;
+      box-shadow: 0 4px 18px rgba(139, 92, 246, 0.25);
+    }
+
+    /* Buttons */
+    .btn-violet {
+      background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+      color: #FFFFFF;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      font-weight: 600;
+      box-shadow: 0 4px 18px rgba(139, 92, 246, 0.38);
+      transition: all 0.25s ease;
+    }
+
+    .btn-violet:hover {
+      background: linear-gradient(135deg, #9D74FF 0%, #6D28D9 100%);
+      color: #FFFFFF;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(139, 92, 246, 0.55);
+    }
+
+    .btn-outline-violet {
+      border: 1px solid var(--border-subtle);
+      background-color: rgba(22, 26, 40, 0.6);
+      color: var(--text-main);
+      font-weight: 500;
+      transition: all 0.25s ease;
+    }
+
+    .btn-outline-violet:hover {
+      border-color: var(--primary-violet);
+      background-color: rgba(139, 92, 246, 0.12);
+      color: #FFFFFF;
+      transform: translateY(-2px);
+    }
+
+    /* Hero / Perfil Section */
+    #perfil {
+      padding-top: 150px;
+      background: radial-gradient(ellipse at 80% 20%, rgba(139, 92, 246, 0.16) 0%, rgba(11, 13, 19, 0) 65%);
+    }
+
+    .avatar-wrapper {
+      position: relative;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    .avatar-glow-ring {
+      position: absolute;
+      inset: -20px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.45) 0%, rgba(139, 92, 246, 0.18) 55%, transparent 75%);
+      filter: blur(28px);
+      z-index: 1;
+      animation: pulse-aura 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulse-aura {
+      0% { opacity: 0.65; transform: scale(0.96); }
+      100% { opacity: 1; transform: scale(1.05); }
+    }
+
+    .badge-floating {
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      background: rgba(17, 20, 31, 0.94);
+      border: 1px solid rgba(139, 92, 246, 0.45);
+      backdrop-filter: blur(12px);
+      padding: 9px 20px;
+      border-radius: 50px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 18px rgba(139, 92, 246, 0.25);
+      z-index: 3;
+    }
+
+    /* Stat Cards */
+    .stat-card {
+      background: var(--bg-card);
+      border-radius: 14px;
+      padding: 20px 18px;
+      border: 1px solid var(--border-subtle);
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      height: 100%;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(139, 92, 246, 0.4);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4), 0 0 20px rgba(139, 92, 246, 0.15);
+    }
+
+    /* Skills Cards */
+    .skill-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 26px;
+      height: 100%;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(139, 92, 246, 0.45);
+      background: var(--bg-surface-elevated);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 25px rgba(139, 92, 246, 0.12);
+    }
+
+    .skill-icon-box {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      background: rgba(139, 92, 246, 0.12);
+      color: #C4B5FD;
+      border: 1px solid rgba(139, 92, 246, 0.25);
+    }
+
+    /* Infinite Marquee Ticker */
+    .ticker-wrapper {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+      padding: 10px 0;
+    }
+
+    .ticker-track {
+      display: flex;
+      gap: 20px;
+      width: max-content;
+      animation: ticker-slide 32s linear infinite;
+    }
+
+    .ticker-wrapper:hover .ticker-track {
+      animation-play-state: paused;
+    }
+
+    @keyframes ticker-slide {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* Modern Projects Carousel Track */
+    .carousel-container {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .carousel-viewport {
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      scroll-snap-type: x mandatory;
+      display: flex;
+      gap: 24px;
+      padding: 10px 4px 20px 4px;
+      cursor: grab;
+    }
+
+    .carousel-viewport:active {
+      cursor: grabbing;
+    }
+
+    .carousel-viewport::-webkit-scrollbar {
+      display: none;
+    }
+
+    .carousel-slide {
+      flex: 0 0 100%;
+      scroll-snap-align: start;
+    }
+
+    @media (min-width: 768px) {
+      .carousel-slide {
+        flex: 0 0 calc(50% - 12px);
+      }
+    }
+
+    @media (min-width: 992px) {
+      .carousel-slide {
+        flex: 0 0 calc(33.333% - 16px);
+      }
+    }
+
+    /* Navigation Arrows */
+    .nav-arrow-btn {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      color: #E2E8F0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+
+    .nav-arrow-btn:hover {
+      background: var(--primary-violet);
+      border-color: var(--primary-violet);
+      color: #FFFFFF;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(139, 92, 246, 0.4);
+    }
+
+    /* Carousel Pagination Dots */
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .dot-btn {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(148, 163, 184, 0.35);
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .dot-btn.active {
+      background: var(--primary-violet);
+      width: 28px;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(139, 92, 246, 0.6);
+    }
+
+    /* Project Cards */
+    .project-card {
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+      overflow: hidden;
+      background: var(--bg-surface);
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      height: 100%;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(139, 92, 246, 0.5);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(139, 92, 246, 0.15);
+    }
+
+    .project-thumb-ai {
+      height: 180px;
+      background: linear-gradient(135deg, #131726 0%, #1A2035 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #C4B5FD;
+      position: relative;
+      border-bottom: 1px solid var(--border-subtle);
+      overflow: hidden;
+    }
+
+    .project-thumb-pattern {
+      position: absolute;
+      inset: 0;
+      opacity: 0.1;
+      background-image: radial-gradient(rgba(139, 92, 246, 0.8) 1.5px, transparent 1.5px);
+      background-size: 16px 16px;
+    }
+
+    /* Contact Card & Inputs */
+    .contact-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 36px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45);
+    }
+
+    .form-control-dark {
+      background-color: #0E111B !important;
+      border: 1px solid var(--border-subtle) !important;
+      color: #F8FAFC !important;
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+    }
+
+    .form-control-dark:focus {
+      border-color: var(--primary-violet) !important;
+      box-shadow: 0 0 0 0.25rem rgba(139, 92, 246, 0.2) !important;
+      background-color: #111422 !important;
+    }
+
+    .form-control-dark::placeholder {
+      color: #64748B !important;
+    }
+
+    /* Social Buttons */
+    .social-btn-dark {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #161A28;
+      color: var(--text-muted);
+      border: 1px solid var(--border-subtle);
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .social-btn-dark:hover {
+      background-color: var(--primary-violet);
+      color: #ffffff;
+      border-color: var(--primary-violet);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(139, 92, 246, 0.35);
+    }
+
+    /* Code label styling */
+    .code-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
+    }
+
+    /* Subtle divider */
+    .section-divider {
+      border-color: var(--border-subtle) !important;
+    }
+  </style>
+</head>
+<body data-bs-offset="100" data-bs-spy="scroll" data-bs-target="#mainNavbar" tabindex="0">
+<!-- ==============================================
+       1. MENU DE NAVEGAÇÃO
+  ============================================== -->
+<nav class="navbar navbar-expand-lg fixed-top" id="mainNavbar">
+<div class="container">
+<a class="navbar-brand text-white d-flex align-items-center gap-2 text-decoration-none" href="#perfil">
+<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgsDYz2kYufrLGWKJlINgDKWAJd5IkqZZ_l6eXwggTnApwjwtibiiNeaSzcZ7b7V61AKKVpm4G3rqwzxDedLZoyKi2z-6GHkToXssIVTCUGUoFCvN32ZW39dI1Tfs7B1Cu9q0WAPPZm3skkh2jNicyS2ZWoLbvTwIfzYS4PDbqRdcGvYNQ-kvtbbNvTIVAkRKxVFG4FZ7jYUD_tanOFGGU-TYCTH8Ec2q7cQuhTZjH8eAYZnU9WYsAUg" alt="Maria Vitória Moraes Logo" style="height: 38px; width: auto; object-fit: contain;" class="rounded">
+<div class="d-flex flex-column">
+<span class="fw-bold tracking-tight text-white fs-6 mb-0 lh-1">Maria Vitória Moraes</span>
+<span class="text-uppercase fw-semibold" style="font-size: 0.65rem; color: rgb(148, 163, 184); letter-spacing: 0.12em;">Dados, Automação &amp; IA</span>
+</div>
+</a>
+<button aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler border-0 shadow-none text-white" data-bs-target="#navbarContent" data-bs-toggle="collapse" type="button">
+<i class="bi bi-list fs-2 text-white"></i>
+</button>
+<div class="collapse navbar-collapse" id="navbarContent">
+<ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-lg-1">
+<li class="nav-item">
+<a class="nav-link px-3" href="#perfil">Perfil</a>
+</li>
+<li class="nav-item">
+<a class="nav-link px-3" href="#habilidades">Especialidades</a>
+</li>
+<li class="nav-item">
+<a class="nav-link px-3" href="#stack">Stack</a>
+</li>
+<li class="nav-item">
+<a class="nav-link px-3" href="#projetos">Projetos</a>
+</li>
+<li class="nav-item">
+<a class="nav-link px-3" href="#contato">Contato</a>
+</li>
+<li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+<a class="btn btn-violet rounded-pill px-4 active" href="#contato">
+<i class="bi bi-chat-text-fill me-1"></i> Fale Comigo
+          </a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<!-- ==============================================
+       2. SEÇÃO DE PERFIL / HERO
+  ============================================== -->
+<section id="perfil">
+<div class="container">
+<div class="row align-items-center g-5">
+<!-- Coluna da Foto / Avatar com DataStore -->
+<div class="col-lg-5 order-lg-2 text-center">
+<div class="avatar-wrapper">
+<div class="avatar-glow-ring"></div>
+<div style="position: relative; z-index: 2; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 25px;">
+<img alt="Foto Profissional Maria Vitória Moraes" class="img-fluid position-relative z-1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaBb1CPfARiAEqPoJet_Hc4zP06XwXj23b0HceB4Ygt4OtDW7KW4wYm6ee-9H72dBILj52TqLbI-Lvqq01U3lGu-V0X97khNYsXh2iVEDAKTt_-27HId3lRqVOQ1MS_xpycpK36xVthBKeke4nPlJhRNGC155WhD-Dw70Ew0KgIly0nGLRZ6MaYUd-ZIDVFW85-okl4SZgmjd_30I3ktiBOfqZnWyGYbhUMwarnT8jhgTXR2FrM6MPMw" style="max-height: 480px; width: auto; object-fit: contain; filter: drop-shadow(rgba(124, 58, 237, 0.4) 0px 15px 35px);">
+</div>
+<div class="badge-floating d-flex align-items-center gap-2">
+<span class="spinner-grow spinner-grow-sm text-success" role="status"></span>
+<span class="small fw-semibold text-white">Disponível para Oportunidades &amp; Projetos</span>
+</div>
+</div>
+</div>
+<!-- Coluna de Apresentação e Biografia -->
+<div class="col-lg-7 order-lg-1">
+<div class="d-inline-flex mb-3">
+<span class="tagline-badge">
+<i class="bi bi-stars"></i> Analisar • Automatizar • Evoluir
+</span>
+</div>
+<h1 class="display-5 fw-bold text-white mb-3" style="letter-spacing: -0.02em; line-height: 1.2;">
+            Transformando dados em <span style="background: linear-gradient(135deg, rgb(196, 181, 253) 0%, rgb(139, 92, 246) 60%, rgb(168, 85, 247) 100%) text; -webkit-text-fill-color: transparent;" class="">decisões estratégicas</span> e automações inteligentes.
+          </h1>
+<p class="lead mb-3" style="color: rgb(148, 163, 184); font-size: 1.02rem; line-height: 1.7;">
+            Sou <strong class="text-white">Maria Vitória Moraes</strong>, estudante de Análise e Desenvolvimento de Sistemas na FATEC Sorocaba, com formação técnica em Administração e experiência profissional na Valid. Desenvolvo soluções tecnológicas que transformam dados em informações estratégicas, simplificam operações e aumentam a eficiência dos processos de negócio.
+          </p>
+<div class="objective-badge mb-4">
+<i class="bi bi-bullseye fs-5 text-primary mt-1"></i>
+<div>
+<strong class="text-white d-block mb-1">Objetivo Profissional</strong>
+<span class="">Construir uma carreira sólida na área de Dados e Tecnologia, conectando processos, análise e inteligência aos objetivos corporativos.</span>
+</div>
+</div>
+<div class="d-flex flex-wrap gap-3 mb-5">
+<a class="btn btn-violet btn-lg rounded-pill px-4" href="#projetos">
+<i class="bi bi-folder-check me-2"></i>Ver Projetos &amp; Portfólio
+            </a>
+<a class="btn btn-outline-violet btn-lg rounded-pill px-4" href="#contato">
+<i class="bi bi-envelope-paper me-2"></i>Entrar em Contato
+            </a>
+</div>
+<!-- Bloco Visual de Métricas / Destaques -->
+<div class="row g-3">
+<div class="col-sm-4">
+<div class="stat-card">
+<h4 class="fw-bold mb-1" style="font-size: 1.15rem; color: rgb(196, 181, 253) !important;">FATEC Sorocaba</h4>
+<small class="text-uppercase fw-semibold" style="font-size: 0.72rem; color: #94A3B8;">Análise e Desenv. de Sistemas</small>
+</div>
+</div>
+<div class="col-sm-4">
+<div class="stat-card">
+<h4 class="fw-bold mb-1" style="font-size: 1.15rem; color: rgb(196, 181, 253) !important;">Experiência Valid</h4>
+<small class="text-uppercase fw-semibold" style="font-size: 0.72rem; color: #94A3B8;">Operações &amp; Processos Corporativos</small>
+</div>
+</div>
+<div class="col-sm-4">
+<div class="stat-card">
+<h4 class="fw-bold mb-1" style="font-size: 1.15rem; color: rgb(196, 181, 253) !important;">Formação Técnica</h4>
+<small class="text-uppercase fw-semibold" style="font-size: 0.72rem; color: #94A3B8;">Administração &amp; Negócios</small>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==============================================
+       3. SEÇÃO DE ESPECIALIDADES & ÁREAS DE ATUAÇÃO
+  ============================================== -->
+<section class="border-top section-divider" id="habilidades" style="background-color: #0E111A;">
+<div class="container">
+<div class="text-center mx-auto mb-5" style="max-width: 720px;">
+<span class="tagline-badge mb-2">Competências &amp; Frentes</span>
+<h2 class="display-6 fw-bold mt-2 text-white">Especialidades &amp; Áreas de Atuação</h2>
+<p style="color: rgb(148, 163, 184);" class="">Domínio estruturado em inteligência analítica, rotinas automatizadas e alinhamento com necessidades de negócio.</p>
+</div>
+<div class="row g-4">
+<!-- Card 1 -->
+<div class="col-md-6 col-lg-4">
+<div class="skill-card">
+<div class="d-flex align-items-center justify-content-between mb-3">
+<div class="skill-icon-box">
+<i class="bi bi-graph-up-arrow"></i>
+</div>
+<span class="badge" style="background: rgba(139, 92, 246, 0.15); color: rgb(196, 181, 253); border: 1px solid rgba(139, 92, 246, 0.3);">Analytics</span>
+</div>
+<h5 class="fw-bold text-white mb-2">Análise e Visualização de Dados</h5>
+<p class="small mb-0" style="color: rgb(148, 163, 184); line-height: 1.6;">Tratamento, modelagem analítica e geração de insights para tomada de decisão fundamentada em métricas e indicadores consistentes.</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="col-md-6 col-lg-4">
+<div class="skill-card">
+<div class="d-flex align-items-center justify-content-between mb-3">
+<div class="skill-icon-box">
+<i class="bi bi-bar-chart-fill"></i>
+</div>
+<span class="badge" style="background: rgba(139, 92, 246, 0.15); color: rgb(196, 181, 253); border: 1px solid rgba(139, 92, 246, 0.3);">Gestão Visual</span>
+</div>
+<h5 class="fw-bold text-white mb-2">Business Intelligence (BI)</h5>
+<p class="small mb-0" style="color: rgb(148, 163, 184); line-height: 1.6;">Dashboards gerenciais em Power BI, KPIs executivos, modelagem dimensional e storytelling com dados para visualização clara de resultados.</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="col-md-6 col-lg-4">
+<div class="skill-card">
+<div class="d-flex align-items-center justify-content-between mb-3">
+<div class="skill-icon-box">
+<i class="bi bi-lightning-charge-fill"></i>
+</div>
+<span class="badge" style="background: rgba(139, 92, 246, 0.15); color: rgb(196, 181, 253); border: 1px solid rgba(139, 92, 246, 0.3);">Eficiência</span>
+</div>
+<h5 class="fw-bold text-white mb-2">Automação de Processos</h5>
+<p class="small mb-0" style="color: rgb(148, 163, 184); line-height: 1.6;">Workflows inteligentes com Power Automate e scripts em Python para redução de trabalho repetitivo, minimizando falhas e prazos operacionais.</p>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="col-md-6 col-lg-4">
+<div class="skill-card">
+<div class="d-flex align-items-center justify-content-between mb-3">
+<div class="skill-icon-box">
+<i class="bi bi-code-slash"></i>
+</div>
+<span class="badge" style="background: rgba(139, 92, 246, 0.15); color: rgb(196, 181, 253); border: 1px solid rgba(139, 92, 246, 0.3);">Programação</span>
+</div>
+<h5 class="fw-bold text-white mb-2">Soluções com Python</h5>
+<p class="small mb-0" style="color: rgb(148, 163, 184); line-height: 1.6;">Scripts analíticos, automações operacionais, manipulação com Pandas e consumo de dados para acelerar tarefas do dia a dia.</p>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="col-md-6 col-lg-4">
+<div class="skill-card">
+<div class="d-flex align-items-center justify-content-between mb-3">
+<div class="skill-icon-box">
+<i class="bi bi-database-fill"></i>
+</div>
+<span class="badge" style="background: rgba(139, 92, 246, 0.15); color: rgb(196, 181, 253); border: 1px solid rgba(139, 92, 246, 0.3);">Estruturação</span>
+</div>
+<h5 class="fw-bold text-white mb-2">Banco de Dados &amp; SQL</h5>
+<p class="small mb-0" style="color: rgb(148, 163, 184); line-height: 1.6;">Consultas complexas, extração, estruturação, joins e integridade de bases relacionais garantindo dados prontos para análise.</p>
+</div>
+</div>
+<!-- Card 6 -->
+<div class="col-md-6 col-lg-4">
+<div class="skill-card">
+<div class="d-flex align-items-center justify-content-between mb-3">
+<div class="skill-icon-box">
+<i class="bi bi-cpu-fill"></i>
+</div>
+<span class="badge" style="background: rgba(139, 92, 246, 0.15); color: rgb(196, 181, 253); border: 1px solid rgba(139, 92, 246, 0.3);">Inovação</span>
+</div>
+<h5 class="fw-bold text-white mb-2">Inteligência Artificial nos Negócios &amp; Web</h5>
+<p class="small mb-0" style="color: rgb(148, 163, 184); line-height: 1.6;">Adoção de IA para otimização empresarial, aliada a fundamentos sólidos de desenvolvimento web com HTML5 e CSS3.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==============================================
+       3.1 SEÇÃO TECNOLOGIAS & FERRAMENTAS (CARROSSEL MARQUEE INFINITO)
+  ============================================== -->
+<section class="border-top section-divider py-5" id="stack" style="background-color: #0B0D13;">
+<div class="container mb-4">
+<div class="text-center">
+<span class="tagline-badge mb-2">Toolbox &amp; Tecnologias</span>
+<h3 class="fw-bold text-white mt-1">Stack Tecnológica &amp; Ferramentas</h3>
+<p class="text-muted small mb-0">Rolagem contínua das tecnologias, frameworks e bancos de dados utilizados no dia a dia</p>
+</div>
+</div>
+<!-- Marquee Infinite Sliding Carrossel -->
+<div class="ticker-wrapper">
+<div class="ticker-track"><div class="tech-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" width="28" height="28" style="object-fit: contain;" class=""><span class="">Python</span></div><div class="tech-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuresqldatabase/azuresqldatabase-original.svg" alt="SQL" width="28" height="28" style="object-fit: contain;" class=""><span class="">SQL</span></div><div class="tech-pill"><img src="https://img.icons8.com/?size=100&amp;id=Ny0t2MYrJ70p&amp;format=png&amp;color=000000" alt="Power BI" width="28" height="28" style="object-fit: contain; filter: drop-shadow(rgba(255, 255, 255, 0.7) 0px 0px 1px);" class=""><span class="">Power BI</span></div><div class="tech-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="HTML5" width="28" height="28" style="object-fit: contain;" class=""><span class="">HTML5</span></div><div class="tech-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="CSS3" width="28" height="28" style="object-fit: contain;" class=""><span class="">CSS3</span></div><div class="tech-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" alt="Git" width="28" height="28" style="object-fit: contain;" class=""><span class="">Git</span></div><div class="tech-pill"><img src="https://img.icons8.com/?size=100&amp;id=33039&amp;format=png&amp;color=000000" alt="AWS" width="28" height="28" style="object-fit: contain; filter: invert(1) brightness(1.2);" class=""><span class="">AWS</span></div><div class="tech-pill"><img src="https://img.icons8.com/?size=100&amp;id=pUf6Ty49x4KC&amp;format=png&amp;color=000000" alt="MCP" width="28" height="28" style="object-fit: contain; filter: drop-shadow(rgba(168, 85, 247, 0.5) 0px 0px 2px);" class=""><span class="">MCP</span></div><div class="tech-pill"><img src="https://img.icons8.com/?size=100&amp;id=13679&amp;format=png&amp;color=000000" alt="Java" width="28" height="28" style="object-fit: contain; filter: drop-shadow(rgba(255, 255, 255, 0.8) 0px 0px 1px);" class=""><span class="">Java</span></div><div class="tech-pill"><img src="https://img.icons8.com/?size=100&amp;id=PXTY4q2Sq2lG&amp;format=png&amp;color=000000" alt="JavaScript" width="28" height="28" style="object-fit: contain; filter: drop-shadow(rgba(255, 255, 255, 0.8) 0px 0px 1px);" class=""><span class="">JavaScript</span></div><div class="tech-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" width="28" height="28" style="object-fit: contain;" class=""><span class="">Python</span></div><div class="tech-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuresqldatabase/azuresqldatabase-original.svg" alt="SQL" width="28" height="28" style="object-fit: contain;" class=""><span class="">SQL</span></div><div class="tech-pill"><img src="https://img.icons8.com/?size=100&amp;id=Ny0t2MYrJ70p&amp;format=png&amp;color=000000" alt="Power BI" width="28" height="28" style="object-fit: contain; filter: drop-shadow(rgba(255, 255, 255, 0.7) 0px 0px 1px);" class=""><span class="">Power BI</span></div><div class="tech-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="HTML5" width="28" height="28" style="object-fit: contain;" class=""><span class="">HTML5</span></div><div class="tech-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="CSS3" width="28" height="28" style="object-fit: contain;" class=""><span class="">CSS3</span></div><div class="tech-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" alt="Git" width="28" height="28" style="object-fit: contain;" class=""><span class="">Git</span></div><div class="tech-pill"><img src="https://img.icons8.com/?size=100&amp;id=33039&amp;format=png&amp;color=000000" alt="AWS" width="28" height="28" style="object-fit: contain; filter: invert(1) brightness(1.2);" class=""><span class="">AWS</span></div><div class="tech-pill"><img src="https://img.icons8.com/?size=100&amp;id=pUf6Ty49x4KC&amp;format=png&amp;color=000000" alt="MCP" width="28" height="28" style="object-fit: contain; filter: drop-shadow(rgba(168, 85, 247, 0.5) 0px 0px 2px);" class=""><span class="">MCP</span></div><div class="tech-pill"><img src="https://img.icons8.com/?size=100&amp;id=13679&amp;format=png&amp;color=000000" alt="Java" width="28" height="28" style="object-fit: contain; filter: drop-shadow(rgba(255, 255, 255, 0.8) 0px 0px 1px);" class=""><span class="">Java</span></div><div class="tech-pill"><img src="https://img.icons8.com/?size=100&amp;id=PXTY4q2Sq2lG&amp;format=png&amp;color=000000" alt="JavaScript" width="28" height="28" style="object-fit: contain; filter: drop-shadow(rgba(255, 255, 255, 0.8) 0px 0px 1px);" class=""><span class="">JavaScript</span></div></div>
+</div>
+</section>
+<!-- ==============================================
+       4. SEÇÃO DE PROJETOS & CASES (CARROSSEL DINÂMICO INTERATIVO)
+  ============================================== -->
+<section class="border-top section-divider" id="projetos">
+<div class="container">
+<div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-4">
+<div>
+<span class="tagline-badge mb-2">Cases &amp; Portfólio Prático</span>
+<h2 class="display-6 fw-bold mt-2 text-white">Projetos em Destaque</h2>
+<p class="mb-0" style="color: rgb(148, 163, 184);">Aplicações práticas conectando análise estratégica de dados, automação e otimização de processos corporativos.</p>
+</div>
+<!-- Controles do Carrossel e Link Github -->
+<div class="mt-4 mt-md-0 d-flex align-items-center gap-3">
+<div class="d-flex align-items-center gap-2">
+<button aria-label="Slide anterior" class="nav-arrow-btn" id="carouselPrevBtn">
+<i class="bi bi-chevron-left fs-5"></i>
+</button>
+<button aria-label="Próximo slide" class="nav-arrow-btn" id="carouselNextBtn">
+<i class="bi bi-chevron-right fs-5"></i>
+</button>
+</div>
+<a class="btn btn-outline-violet rounded-pill px-4" href="https://github.com/MaryVictoi" target="_blank">
+<i class="bi bi-github me-2"></i>github.com/MaryVictoi
+  </a>
+</div>
+</div>
+<!-- Container do Carrossel Interativo -->
+<div class="carousel-container" id="projectsCarouselContainer">
+<div class="carousel-viewport" id="projectsCarouselViewport">
+<!-- Case 1 -->
+<div class="carousel-slide">
+<div class="project-card d-flex flex-column">
+<div class="project-thumb-ai">
+<div class="project-thumb-pattern"></div>
+<i class="bi bi-bar-chart-line-fill fs-1 position-relative z-1 mb-2"></i>
+<span class="code-tag small position-relative z-1 text-uppercase text-secondary">Power BI &amp; DAX</span>
+</div>
+<div class="p-4 d-flex flex-column flex-grow-1">
+<div class="d-flex flex-wrap gap-2 mb-3">
+<span class="badge" style="background: rgba(139, 92, 246, 0.15); color: rgb(196, 181, 253); border: 1px solid rgba(139, 92, 246, 0.3);">Business Intelligence</span>
+<span class="badge" style="background: rgba(30, 41, 59, 0.8); color: rgb(148, 163, 184); border: 1px solid rgb(51, 65, 85);">Power BI</span>
+<span class="badge" style="background: rgba(30, 41, 59, 0.8); color: rgb(148, 163, 184); border: 1px solid rgb(51, 65, 85);">DAX</span>
+</div>
+<h5 class="fw-bold text-white mb-2">Dashboard de Gestão &amp; BI em Power BI</h5>
+<p class="small flex-grow-1" style="color: rgb(148, 163, 184); line-height: 1.6;">
+            Análise de performance, faturamento e indicadores operacionais com filtros dinâmicos, métricas DAX e visão estratégica para tomada de decisão rápida.
+          </p>
+<div class="d-flex gap-2 pt-3 border-top section-divider mt-auto">
+<a class="btn btn-sm btn-violet rounded-pill px-3" href="https://github.com/MaryVictoi" target="_blank">Ver no GitHub</a>
+<a class="btn btn-sm btn-outline-violet rounded-pill px-3" href="#contato">Detalhes</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Case 2 -->
+<div class="carousel-slide">
+<div class="project-card d-flex flex-column">
+<div class="project-thumb-ai">
+<div class="project-thumb-pattern"></div>
+<i class="bi bi-arrow-repeat fs-1 position-relative z-1 mb-2"></i>
+<span class="code-tag small position-relative z-1 text-uppercase text-secondary">Workflows &amp; Scripts</span>
+</div>
+<div class="p-4 d-flex flex-column flex-grow-1">
+<div class="d-flex flex-wrap gap-2 mb-3">
+<span class="badge" style="background: rgba(139, 92, 246, 0.15); color: rgb(196, 181, 253); border: 1px solid rgba(139, 92, 246, 0.3);">Automação</span>
+<span class="badge" style="background: rgba(30, 41, 59, 0.8); color: rgb(148, 163, 184); border: 1px solid rgb(51, 65, 85);">Power Automate</span>
+<span class="badge" style="background: rgba(30, 41, 59, 0.8); color: rgb(148, 163, 184); border: 1px solid rgb(51, 65, 85);">Python</span>
+</div>
+<h5 class="fw-bold text-white mb-2">Automação de Fluxos com Power Automate &amp; Python</h5>
+<p class="small flex-grow-1" style="color: rgb(148, 163, 184); line-height: 1.6;">
+            Rotina automatizada de extração e tratamento de relatórios periódicos com disparo de alertas operacionais, reduzindo tempo gasto em tarefas repetitivas.
+          </p>
+<div class="d-flex gap-2 pt-3 border-top section-divider mt-auto">
+<a class="btn btn-sm btn-violet rounded-pill px-3" href="https://github.com/MaryVictoi" target="_blank">Ver no GitHub</a>
+<a class="btn btn-sm btn-outline-violet rounded-pill px-3" href="#contato">Detalhes</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Case 3 -->
+<div class="carousel-slide">
+<div class="project-card d-flex flex-column">
+<div class="project-thumb-ai">
+<div class="project-thumb-pattern"></div>
+<i class="bi bi-database-check fs-1 position-relative z-1 mb-2"></i>
+<span class="code-tag small position-relative z-1 text-uppercase text-secondary">Data Prep &amp; SQL</span>
+</div>
+<div class="p-4 d-flex flex-column flex-grow-1">
+<div class="d-flex flex-wrap gap-2 mb-3">
+<span class="badge" style="background: rgba(139, 92, 246, 0.15); color: rgb(196, 181, 253); border: 1px solid rgba(139, 92, 246, 0.3);">Data Science</span>
+<span class="badge" style="background: rgba(30, 41, 59, 0.8); color: rgb(148, 163, 184); border: 1px solid rgb(51, 65, 85);">SQL</span>
+<span class="badge" style="background: rgba(30, 41, 59, 0.8); color: rgb(148, 163, 184); border: 1px solid rgb(51, 65, 85);">Pandas</span>
+</div>
+<h5 class="fw-bold text-white mb-2">Análise Exploratória e Modelagem de Dados em SQL &amp; Python</h5>
+<p class="small flex-grow-1" style="color: rgb(148, 163, 184); line-height: 1.6;">
+            Processamento e limpeza de bases complexas, consultas analíticas estruturadas e visualização de correlações relevantes para o contexto de negócio.
+          </p>
+<div class="d-flex gap-2 pt-3 border-top section-divider mt-auto">
+<a class="btn btn-sm btn-violet rounded-pill px-3" href="https://github.com/MaryVictoi" target="_blank">Ver no GitHub</a>
+<a class="btn btn-sm btn-outline-violet rounded-pill px-3" href="#contato">Detalhes</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Case 4 (Novo Complementar) -->
+<div class="carousel-slide">
+<div class="project-card d-flex flex-column">
+<div class="project-thumb-ai">
+<div class="project-thumb-pattern"></div>
+<i class="bi bi-robot fs-1 position-relative z-1 mb-2"></i>
+<span class="code-tag small position-relative z-1 text-uppercase text-secondary">RPA &amp; Integração</span>
+</div>
+<div class="p-4 d-flex flex-column flex-grow-1">
+<div class="d-flex flex-wrap gap-2 mb-3">
+<span class="badge" style="background: rgba(139, 92, 246, 0.15); color: rgb(196, 181, 253); border: 1px solid rgba(139, 92, 246, 0.3);">RPA</span>
+<span class="badge" style="background: rgba(30, 41, 59, 0.8); color: rgb(148, 163, 184); border: 1px solid rgb(51, 65, 85);">ETL</span>
+<span class="badge" style="background: rgba(30, 41, 59, 0.8); color: rgb(148, 163, 184); border: 1px solid rgb(51, 65, 85);">Excel / CSV</span>
+</div>
+<h5 class="fw-bold text-white mb-2">Automação RPA &amp; Integrações de Dados Corporativos</h5>
+<p class="small flex-grow-1" style="color: rgb(148, 163, 184); line-height: 1.6;">
+            Pipeline automatizado de consolidação de planilhas e banco relacional, garantindo integridade e envio pontual de dados para equipes operacionais.
+          </p>
+<div class="d-flex gap-2 pt-3 border-top section-divider mt-auto">
+<a class="btn btn-sm btn-violet rounded-pill px-3" href="https://github.com/MaryVictoi" target="_blank">Ver no GitHub</a>
+<a class="btn btn-sm btn-outline-violet rounded-pill px-3" href="#contato">Detalhes</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Case 5 (Novo Complementar) -->
+<div class="carousel-slide">
+<div class="project-card d-flex flex-column">
+<div class="project-thumb-ai">
+<div class="project-thumb-pattern"></div>
+<i class="bi bi-cpu fs-1 position-relative z-1 mb-2"></i>
+<span class="code-tag small position-relative z-1 text-uppercase text-secondary">IA &amp; Insights</span>
+</div>
+<div class="p-4 d-flex flex-column flex-grow-1">
+<div class="d-flex flex-wrap gap-2 mb-3">
+<span class="badge" style="background: rgba(139, 92, 246, 0.15); color: rgb(196, 181, 253); border: 1px solid rgba(139, 92, 246, 0.3);">Inteligência Artificial</span>
+<span class="badge" style="background: rgba(30, 41, 59, 0.8); color: rgb(148, 163, 184); border: 1px solid rgb(51, 65, 85);">Analytics</span>
+<span class="badge" style="background: rgba(30, 41, 59, 0.8); color: rgb(148, 163, 184); border: 1px solid rgb(51, 65, 85);">Produtividade</span>
+</div>
+<h5 class="fw-bold text-white mb-2">Inteligência Artificial Aplicada a Negócios</h5>
+<p class="small flex-grow-1" style="color: rgb(148, 163, 184); line-height: 1.6;">
+            Implementação de prompts analíticos e agentes automatizados para sumarização de indicadores-chave e suporte à elaboração de relatórios executivos.
+          </p>
+<div class="d-flex gap-2 pt-3 border-top section-divider mt-auto">
+<a class="btn btn-sm btn-violet rounded-pill px-3" href="https://github.com/MaryVictoi" target="_blank">Ver no GitHub</a>
+<a class="btn btn-sm btn-outline-violet rounded-pill px-3" href="#contato">Detalhes</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Indicadores de Paginação / Dots -->
+<div class="carousel-dots" id="carouselDots"><button class="dot-btn" aria-label="Ir para slide 1"></button><button class="dot-btn active" aria-label="Ir para slide 2"></button><button class="dot-btn" aria-label="Ir para slide 3"></button></div>
+</div>
+</div>
+</section>
+<!-- ==============================================
+       5. SEÇÃO DE CONTATO
+  ============================================== -->
+<section class="border-top section-divider" id="contato" style="background-color: #0E111A;">
+<div class="container">
+<div class="row g-5 align-items-center">
+<!-- Coluna de Informações e Redes -->
+<div class="col-lg-5">
+<span class="tagline-badge mb-2">Conexão &amp; Oportunidades</span>
+<h2 class="display-6 fw-bold mt-2 text-white">Vamos conversar sobre tecnologia e oportunidades?</h2>
+<p class="mb-4" style="color: rgb(148, 163, 184); line-height: 1.7;">
+            Aberta a oportunidades profissionais em Dados, Business Intelligence e Automação de Processos, além de projetos e trocas técnicas de tecnologia.
+          </p>
+<div class="d-flex flex-column gap-3 mb-4">
+<div class="d-flex align-items-center gap-3">
+<div class="skill-icon-box" style="width: 44px; height: 44px; font-size: 1.1rem;">
+<i class="bi bi-mortarboard-fill"></i>
+</div>
+<div>
+<small class="d-block" style="color: #94A3B8;">Formação Acadêmica</small>
+<span class="text-white fw-semibold">Análise e Desenv. de Sistemas</span>
+</div>
+</div>
+<div class="d-flex align-items-center gap-3">
+<div class="skill-icon-box" style="width: 44px; height: 44px; font-size: 1.1rem;">
+<i class="bi bi-linkedin"></i>
+</div>
+<div>
+<small class="d-block" style="color: #94A3B8;">LinkedIn Oficial</small>
+<a class="text-white fw-semibold text-decoration-none" href="https://linkedin.com/in/maria-vitoria-moraes-597a2b287" target="_blank" rel="noopener noreferrer">Maria Vitória Moraes</a>
+</div>
+</div>
+<div class="d-flex align-items-center gap-3">
+<div class="skill-icon-box" style="width: 44px; height: 44px; font-size: 1.1rem;">
+<i class="bi bi-github"></i>
+</div>
+<div>
+<small class="d-block" style="color: #94A3B8;">Repositórios &amp; Código</small>
+<a class="text-white fw-semibold text-decoration-none" href="https://github.com/MaryVictoi" target="_blank">github.com/MaryVictoi</a>
+</div>
+</div>
+</div>
+<h6 class="fw-bold text-white mb-3">Redes &amp; Perfis:</h6>
+<div class="d-flex gap-2">
+<a aria-label="LinkedIn de Maria Vitória Moraes" class="social-btn-dark" href="https://linkedin.com/in/maria-vitoria-moraes-597a2b287" target="_blank" title="LinkedIn">
+<i class="bi bi-linkedin"></i>
+</a>
+<a aria-label="GitHub de Maria Vitória Moraes" class="social-btn-dark" href="https://github.com/MaryVictoi" target="_blank" title="GitHub">
+<i class="bi bi-github"></i>
+</a>
+</div>
+</div>
+<!-- Coluna do Formulário -->
+<div class="col-lg-7">
+<div class="contact-card">
+<div class="d-flex align-items-center gap-2 mb-4">
+<span class="brand-monogram" style="width: 28px; height: 28px; font-size: 0.8rem;">MV</span>
+<h4 class="fw-bold text-white mb-0">Enviar Mensagem ou Proposta</h4>
+</div>
+<form id="portfolioContactForm" onsubmit="event.preventDefault(); alert('Mensagem enviada com sucesso! Obrigado pelo contato, responderei em breve.');">
+<div class="row g-3">
+<div class="col-md-6">
+<label class="form-label small fw-semibold" for="nome" style="color: rgb(203, 213, 225);">Nome Completo *</label>
+<input class="form-control form-control-dark" id="nome" placeholder="Ex: Roberto Silveira" required="" type="text">
+</div>
+<div class="col-md-6">
+<label class="form-label small fw-semibold" for="email" style="color: rgb(203, 213, 225);">E-mail *</label>
+<input class="form-control form-control-dark" id="email" placeholder="seu-email@empresa.com" required="" type="email">
+</div>
+<div class="col-12">
+<label class="form-label small fw-semibold" for="desafio" style="color: rgb(203, 213, 225);">Assunto de Interesse *</label>
+<select class="form-control form-control-dark" id="desafio" required="">
+<option class="bg-dark text-white" value="">Selecione o motivo do contato...</option>
+<option class="bg-dark text-white" value="vaga">Oportunidade Profissional (Estágio / Júnior)</option>
+<option class="bg-dark text-white" value="bi-dashboards">Projetos em BI &amp; Dashboards (Power BI)</option>
+<option class="bg-dark text-white" value="automacao">Automação de Processos &amp; Python</option>
+<option class="bg-dark text-white" value="dados">Modelagem e Banco de Dados (SQL)</option>
+<option class="bg-dark text-white" value="outro">Networking / Outro</option>
+</select>
+</div>
+<div class="col-12">
+<label class="form-label small fw-semibold" for="mensagem" style="color: rgb(203, 213, 225);">Mensagem *</label>
+<textarea class="form-control form-control-dark" id="mensagem" placeholder="Compartilhe uma proposta, detalhe da oportunidade ou contexto do projeto..." required="" rows="4"></textarea>
+</div>
+<div class="col-12 mt-4">
+<button class="btn btn-violet btn-lg rounded-pill px-5 w-100" type="submit">
+<i class="bi bi-send-fill me-2"></i>Enviar Mensagem
+                  </button>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==============================================
+       6. RODAPÉ (FOOTER)
+  ============================================== -->
+<footer class="py-5 border-top section-divider" style="background-color: #080A0F;">
+<div class="container">
+<div class="row align-items-center gy-4">
+<div class="col-md-6 text-center text-md-start">
+<div class="d-flex align-items-center justify-content-center justify-content-md-start gap-2 mb-2">
+<img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgsDYz2kYufrLGWKJlINgDKWAJd5IkqZZ_l6eXwggTnApwjwtibiiNeaSzcZ7b7V61AKKVpm4G3rqwzxDedLZoyKi2z-6GHkToXssIVTCUGUoFCvN32ZW39dI1Tfs7B1Cu9q0WAPPZm3skkh2jNicyS2ZWoLbvTwIfzYS4PDbqRdcGvYNQ-kvtbbNvTIVAkRKxVFG4FZ7jYUD_tanOFGGU-TYCTH8Ec2q7cQuhTZjH8eAYZnU9WYsAUg" alt="Maria Vitória Moraes Logo" style="height: 36px; width: auto; object-fit: contain;" class="rounded">
+<span class="fw-bold text-white fs-5">Maria Vitória Moraes</span>
+</div>
+<p class="small mb-1" style="color: rgb(148, 163, 184);">
+            Manifesto: <span class="text-white fw-semibold">Analisar • Automatizar • Evoluir</span>
+</p>
+<p class="small mb-0" style="color: rgb(100, 116, 139);">
+            © 2025 Maria Vitória Moraes. Todos os direitos reservados. FATEC Sorocaba • Valid.
+          </p>
+</div>
+<div class="col-md-6 text-center text-md-end">
+<p class="small mb-2" style="color: rgb(148, 163, 184);">
+            Dados, Business Intelligence, Automações Inteligentes e Soluções Tecnológicas.
+          </p>
+<div class="d-flex justify-content-center justify-content-md-end gap-3 small">
+<a class="text-decoration-none" href="https://github.com/MaryVictoi" style="color: rgb(148, 163, 184);" target="_blank"><i class="bi bi-github me-1"></i>GitHub</a>
+<span style="color: rgb(100, 116, 139);" class="">•</span>
+<a class="text-decoration-none" href="https://linkedin.com/in/maria-vitoria-moraes-597a2b287" style="color: rgb(148, 163, 184);" target="_blank"><i class="bi bi-linkedin me-1"></i>LinkedIn</a>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- Bootstrap 5 Bundle JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Script do Carrossel de Projetos -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const viewport = document.getElementById('projectsCarouselViewport');
+    const container = document.getElementById('projectsCarouselContainer');
+    const prevBtn = document.getElementById('carouselPrevBtn');
+    const nextBtn = document.getElementById('carouselNextBtn');
+    const dotsContainer = document.getElementById('carouselDots');
+    const slides = Array.from(viewport.querySelectorAll('.carousel-slide'));
+
+    if (!viewport || slides.length === 0) return;
+
+    let currentIndex = 0;
+    let autoPlayInterval = null;
+
+    // Calcular quantidade de slides visíveis
+    function getVisibleCount() {
+      if (window.innerWidth >= 992) return 3;
+      if (window.innerWidth >= 768) return 2;
+      return 1;
+    }
+
+    function getMaxIndex() {
+      const visible = getVisibleCount();
+      return Math.max(0, slides.length - visible);
+    }
+
+    // Criar dots dinamicamente
+    function buildDots() {
+      dotsContainer.innerHTML = '';
+      const maxIdx = getMaxIndex();
+      for (let i = 0; i <= maxIdx; i++) {
+        const dot = document.createElement('button');
+        dot.className = `dot-btn ${i === currentIndex ? 'active' : ''}`;
+        dot.setAttribute('aria-label', `Ir para slide ${i + 1}`);
+        dot.addEventListener('click', () => {
+          goToSlide(i);
+          resetAutoPlay();
+        });
+        dotsContainer.appendChild(dot);
+      }
+    }
+
+    function updateDots() {
+      const dots = dotsContainer.querySelectorAll('.dot-btn');
+      dots.forEach((dot, idx) => {
+        if (idx === currentIndex) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+    }
+
+    function goToSlide(index) {
+      const maxIdx = getMaxIndex();
+      currentIndex = Math.max(0, Math.min(index, maxIdx));
+      
+      const targetSlide = slides[currentIndex];
+      if (targetSlide) {
+        viewport.scrollTo({
+          left: targetSlide.offsetLeft - viewport.offsetLeft,
+          behavior: 'smooth'
+        });
+      }
+      updateDots();
+    }
+
+    // Navegação botões
+    prevBtn.addEventListener('click', () => {
+      const maxIdx = getMaxIndex();
+      if (currentIndex <= 0) {
+        goToSlide(maxIdx);
+      } else {
+        goToSlide(currentIndex - 1);
+      }
+      resetAutoPlay();
+    });
+
+    nextBtn.addEventListener('click', () => {
+      const maxIdx = getMaxIndex();
+      if (currentIndex >= maxIdx) {
+        goToSlide(0);
+      } else {
+        goToSlide(currentIndex + 1);
+      }
+      resetAutoPlay();
+    });
+
+    // Auto Play com pausa no hover
+    function startAutoPlay() {
+      autoPlayInterval = setInterval(() => {
+        const maxIdx = getMaxIndex();
+        if (currentIndex >= maxIdx) {
+          goToSlide(0);
+        } else {
+          goToSlide(currentIndex + 1);
+        }
+      }, 4500);
+    }
+
+    function stopAutoPlay() {
+      if (autoPlayInterval) clearInterval(autoPlayInterval);
+    }
+
+    function resetAutoPlay() {
+      stopAutoPlay();
+      startAutoPlay();
+    }
+
+    container.addEventListener('mouseenter', stopAutoPlay);
+    container.addEventListener('mouseleave', startAutoPlay);
+
+    // Sincronizar ao rolar manualmente
+    let scrollTimeout;
+    viewport.addEventListener('scroll', () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        const scrollLeft = viewport.scrollLeft;
+        let closestIndex = 0;
+        let minDiff = Infinity;
+
+        slides.forEach((slide, idx) => {
+          const diff = Math.abs((slide.offsetLeft - viewport.offsetLeft) - scrollLeft);
+          if (diff < minDiff) {
+            minDiff = diff;
+            closestIndex = idx;
+          }
+        });
+
+        const maxIdx = getMaxIndex();
+        currentIndex = Math.min(closestIndex, maxIdx);
+        updateDots();
+      }, 120);
+    });
+
+    // Redimensionamento de tela
+    window.addEventListener('resize', () => {
+      buildDots();
+      goToSlide(currentIndex);
+    });
+
+    // Inicialização
+    buildDots();
+    startAutoPlay();
+  });
+</script>
+
+
+</body></html>
