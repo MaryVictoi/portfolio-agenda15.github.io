@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="caminho/para/a/sua/imagem-banner.png" alt="Banner do Meu Portfólio" width="100%">
+<img src="imagem-banner.png" alt="Banner do Meu Portfólio" width="100%">
 
 # 🚀 Meu Portfólio Pessoal
 
