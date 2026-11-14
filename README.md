@@ -40,7 +40,7 @@ O objetivo é simular uma apresentação profissional voltada ao mercado de trab
 
 O portfólio foi publicado por meio do **GitHub Pages**.
 
-➡️ **Acesse aqui:** [https://seunome.github.io/portfolio](https://maryvictoi.github.io/portfolio-agenda15.github.io/)
+➡️ **Acesse aqui:** (https://maryvictoi.github.io/mariavitoriamoraes/)
 
 ## ⚙️ Funcionamento do Projeto
 
