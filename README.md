@@ -10,7 +10,7 @@
 
 Um portfólio web responsivo desenvolvido para apresentar meu perfil, habilidades e projetos.
 
-[🌍 Acessar o portfólio](https://seunome.github.io/portfolio)
+[🌍 Acessar o portfólio](https://maryvictoi.github.io/mariavitoriamoraes/)
 
 </div>
 
